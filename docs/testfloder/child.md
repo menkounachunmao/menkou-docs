@@ -44,6 +44,3 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 @[code{3-10} js{3}:no-line-numbers](./foo.js)
 
 1+1 = {{1+1}}
-![图片](./post*loading.gif)
-
-![收藏](/images/收藏.png)
