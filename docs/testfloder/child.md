@@ -44,3 +44,4 @@ const onePlusTwoPlusThree = {{ 1 + 2 + 3 }}
 @[code{3-10} js{3}:no-line-numbers](./foo.js)
 
 1+1 = {{1+1}}
+发射大方
