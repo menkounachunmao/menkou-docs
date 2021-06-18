@@ -2,7 +2,7 @@
  * @Author: xx
  * @Date: 2021-06-18 10:50:27
  * @LastEditors: 青峰
- * @LastEditTime: 2021-06-18 17:41:49
+ * @LastEditTime: 2021-06-18 18:51:44
  * @FilePath: /vue-press/docs/git/README.md
 -->
 
@@ -157,7 +157,7 @@ git remote add <shortname>
 git fetch <remote>
 ```
 
-> 如果你使用 clone 命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以 “origin” 为简写。 所以，git fetch origin 会抓取克隆（或上一次抓取）后新推送的所有工作。 必须注意 git fetch 命令只会将数据下载到你的本地仓库——它并不会自动合并或修改你当前的工作。
+> 如果你使用 clone 命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以 “origin” 为简写。 所以，git fetch origin 会抓取克隆（或上一次抓取）后新推送的所有工作。 必须注意 git fetch 命令只会将数据下载到你的本地仓库——它并不会自动合并或修改你当前的工作。git pull 在大多数情况下它的含义是一个 git fetch 紧接着一个 git merge 命令
 
 - 推送到远程仓库
 
@@ -268,7 +268,112 @@ Tip:
 
 GitHub 有一个十分详细的针对数十种项目及语言的 .gitignore 文件列表， 你可以在 <https://github.com/github/gitignore> 找到它。
 
-### 补救
+## 分支
+
+![img](https://git-scm.com/book/en/v2/images/advance-master.png)
+
+> Git 保存的不是文件的变化或者差异，而是一系列不同时刻的 快照 。
+
+### 创建分支
+
+```bash
+ git branch <branch>
+```
+
+在当前所在的提交对象上创建一个指针,HEAD 指向当前所在的分支
+
+### 分支切换
+
+```bash
+ git checkout <branch>
+
+ git checkout -b <branch> // 创建并切换到目标分支
+
+ git checkout -b <本地分支名> origin/<远程分支名> // 将远程git仓库里的指定分支拉取到本地（本地不存在的分支）
+```
+
+如果你尝试检出的分支 (a) 不存在且 (b) 刚好只有一个名字与之匹配的远程分支，那么 Git 就会为你创建一个跟踪分支
+
+### 合并分支
+
+```bash
+git merge  <branch>
+```
+
+![img](https://git-scm.com/book/en/v2/images/basic-branching-5.png)
+
+没有冲突时只是简单的指针移动
+
+![img](https://git-scm.com/book/en/v2/images/basic-merging-1.png)
+
+ master 分支所在提交并不是 iss53 分支所在提交的直接祖先，Git 不得不做一些额外的工作。 出现这种情况的时候，Git 会使用两个分支的末端所指的快照（C4 和 C5）以及这两个分支的公共祖先（C2），做一个简单的三方合并
+
+![img](https://git-scm.com/book/en/v2/images/basic-merging-2.png)
+
+有冲突的情况下，解决冲突，然后提交更改
+
+### 删除分支
+
+```bash
+ git branch -d  <branch>
+ git branch -D  <branch> // 强制删除
+```
+
+### 查看所有分支
+
+```bash
+git branch
+```
+
+```git branch --no-merged | merged``` 查看已合并或者未合并的分支, 后面可接分支名来筛选。
+
+### 修剪远程分支
+
+当某些分支远程已经删除本地还是存在时
+
+```bash
+git remote prune origin
+```
+
+### 推送分支
+
+```bash
+git push <remote> <branch>
+
+git push <remote> <branch>:<other_ranch> // 推送本地分支到一个命名不相同的远程分支
+```
+
+### 跟踪远程分支
+
+- 修改正在跟踪的上游分支
+
+```bash
+git branch -u origin/serverfix
+```
+
+### 删除远程分支
+
+```bash
+git push origin --delete <branch>
+```
+
+### 变基
+
+```bash
+git rebase master
+```
+
+它的原理是首先找到这两个分支（即当前分支 experiment、变基操作的目标基底分支 master） 的最近共同祖先 C2，然后对比当前分支相对于该祖先的历次提交，提取相应的修改并存为临时文件， 然后将当前分支指向目标基底 C3, 最后以此将之前另存为临时文件的修改依序应用。 （译注：写明了 commit id，以便理解，下同）
+
+![img](https://git-scm.com/book/en/v2/images/basic-rebase-3.png)
+
+#### 变基风险
+
+**如果提交存在于你的仓库之外，而别人可能基于这些提交进行开发，那么不要执行变基。**
+
+> 变基操作的实质是丢弃一些现有的提交，然后相应地新建一些内容一样但实际上不同的提交。
+
+## 补救
 
 撤消对文件的修改
 
