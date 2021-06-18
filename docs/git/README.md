@@ -2,7 +2,7 @@
  * @Author: xx
  * @Date: 2021-06-18 10:50:27
  * @LastEditors: 青峰
- * @LastEditTime: 2021-06-18 15:51:36
+ * @LastEditTime: 2021-06-18 17:11:25
  * @FilePath: /vue-press/docs/git/README.md
 -->
 
@@ -95,6 +95,92 @@ git rm --cached <文件名>
 
 ```bash
 git rm log/\*.log 
+```
+
+### 查看提交记录
+
+```bash
+git log
+```
+
+git log 后面可以接各种命令来筛选记录，比较麻烦建议直接使用可视化工具查看
+
+```bash
+git log --pretty=format:"%h %s" --graph
+```
+
+### 撤销操作
+
+#### 已提交
+
+```bash
+git commit -m 'initial commit'
+git add forgotten_file
+git commit --amend
+```
+
+当前提交替换前一次提交
+
+#### 未提交
+
+- 将文件从缓存中撤销
+
+```bash
+git reset HEAD <文件名>
+```
+
+- 撤销文件的修改(重置为上一次提交)
+
+```bash
+git checkout -- <文件名>
+```
+
+### 远程仓库
+
+- 查看远程仓库
+
+```bash
+git remote -v
+```
+
+```-v```，会显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL。
+
+- 添加远程仓库
+
+```bash
+git remote add <shortname>
+```
+
+- 从远程仓库中抓取与拉取
+
+```bash
+git fetch <remote>
+```
+
+> 如果你使用 clone 命令克隆了一个仓库，命令会自动将其添加为远程仓库并默认以 “origin” 为简写。 所以，git fetch origin 会抓取克隆（或上一次抓取）后新推送的所有工作。 必须注意 git fetch 命令只会将数据下载到你的本地仓库——它并不会自动合并或修改你当前的工作。
+
+- 推送到远程仓库
+
+```bash
+ git push origin master 或者 git push
+```
+
+- 查看某个远程仓库
+
+```bash
+ git remote show <remote>
+```
+
+- 远程仓库的重命名与移除
+
+```bash
+ git remote rename <old> <new>
+```
+
+同时也会修改你所有远程跟踪的分支名字
+
+```bash
+ git remote remove <remote>
 ```
 
 ### .gitignore
