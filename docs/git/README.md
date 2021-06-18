@@ -2,7 +2,7 @@
  * @Author: xx
  * @Date: 2021-06-18 10:50:27
  * @LastEditors: 青峰
- * @LastEditTime: 2021-06-18 17:11:25
+ * @LastEditTime: 2021-06-18 17:35:36
  * @FilePath: /vue-press/docs/git/README.md
 -->
 
@@ -84,7 +84,7 @@ git commit -a -m <提交说明> // 快速提交
 git rm -f  <文件名>
 ```
 
--只清除暂存区不删除文件
+- 只清除暂存区不删除文件
 
 ```bash
 git rm --cached <文件名>
@@ -183,6 +183,44 @@ git fetch <remote>
  git remote remove <remote>
 ```
 
+### 标签
+
+#### 查看标签
+
+```bash
+git tag
+git tag -l "v1.8.5*" // 按条件查找
+```
+
+#### 创建标签
+
+```bash
+git tag -a v1.4 -m "my version 1.4" // 创建附注标签
+git tag  v1.4 // 创建轻量标签
+ git tag -a v1.2 <hash> // 历史提交打tag
+```
+
+#### 推送标签
+
+默认情况下，git push 命令并不会传送标签到远程仓库服务器上。 在创建完标签后你必须显式地推送标签到共享服务器上。 这个过程就像共享远程分支一样——你可以运行 ```git push origin <tagname>```,推送所有```git push origin --tags```
+
+#### 删除标签
+
+```bash
+git tag -d <tagname>
+```
+
+上述命令并不会从任何远程仓库中移除这个标签，你必须用 ```git push <remote> :refs/tags/<tagname>``` 来更新你的远程仓库,或者```git push origin --delete <tagname>```
+
+### Git 别名
+
+> Git 并不会在你输入部分命令时自动推断出你想要的命令。 如果不想每次都输入完整的 Git 命令，可以通过 git config 文件来轻松地为每一个命令设置一个别名。 这里有一些例子你可以试试：
+
+```bash
+$ git config --global alias.co checkout
+$ git config --global alias.br branch
+$ git config --global alias.ci commit
+$ git config --global alias.st status```
 ### .gitignore
 
 ```gitignore
