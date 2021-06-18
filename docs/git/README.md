@@ -2,7 +2,7 @@
  * @Author: xx
  * @Date: 2021-06-18 10:50:27
  * @LastEditors: 青峰
- * @LastEditTime: 2021-06-18 11:44:40
+ * @LastEditTime: 2021-06-18 15:25:52
  * @FilePath: /vue-press/docs/git/README.md
 -->
 
@@ -10,7 +10,111 @@
 
 ## 基础
 
-todo
+### 初始化仓库
+
+1, 空项目
+
+```bash
+git init
+git remote add origin <url>
+```
+
+或者直接克隆远程仓库
+
+```bash
+git clone <url>
+```
+
+2, 已有本地仓库
+
+- 没有远程仓库直接添加即可
+- 已有远程仓库参考[链接远程仓库](#工作区)
+
+### 检查当前文件状态
+
+可以用 git status 命令查看哪些文件处于什么状态。
+
+```bash
+git status
+
+git status -s // 简洁模式
+```
+
+### 跟踪新文件
+
+使用命令 git add 开始跟踪一个文件。 所以，要跟踪 README 文件，运行：
+
+```bash
+git add README
+```
+
+> 将这个命令理解为“精确地将内容添加到下一次提交中”而不是“将一个文件添加到项目中”要更加合适。
+
+### 提交更新
+
+```bash
+git commit
+
+git commit -m <提交说明>
+```
+
+提交说明格式建议：
+
+- ADD-FEAT：新增功能提交（一般用于第一次功能代码提交）
+- ADD-STYLE: 新增加代码风格样式修改
+- MOD-STYLE：修改/ 整理代码风格样式，不涉及逻辑更改 （常用）
+- MOD-FEAT: 修改功能代码（一般用于第一次之后的功能代码提交）
+- BUGFIX: 用于平常测试的bug修复；
+- HOTFIX: 用于线上紧急bug修复
+- DEL-STYLE：对于代码风格上删除一些无用代码、注释等
+- DEL-FEAT: 删除一些无用的功能块代码
+
+### .gitignore
+
+```gitignore
+node_modules // 忽略node_modules下所有文件
+.temp
+.cache
+dist
+```
+
+```.gitignore``` 的格式规范如下：
+
+- 所有空行或者以 # 开头的行都会被 Git 忽略。
+
+- 可以使用标准的 glob 模式匹配，它会递归地应用在整个工作区中。
+
+- 匹配模式可以以（/）开头防止递归。
+
+- 匹配模式可以以（/）结尾指定目录。
+
+- 要忽略指定模式以外的文件或目录，可以在模式前加上叹号（!）取反。
+
+> glob 模式是指 shell 所使用的简化了的正则表达式。 星号（*）匹配零个或多个任意字符；[abc] 匹配任何一个列在方括号中的字符 （这个例子要么匹配一个 a，要么匹配一个 b，要么匹配一个 c）； 问号（?）只匹配一个任意字符；如果在方括号中使用短划线分隔两个字符， 表示所有在这两个字符范围内的都可以匹配（比如 [0-9] 表示匹配所有 0 到 9 的数字）。 使用两个星号（**）表示匹配任意中间目录，比如 a/**/z 可以匹配 a/z 、 a/b/z 或 a/b/c/z 等。
+
+```gitignore
+# 忽略所有的 .a 文件
+*.a
+
+# 但跟踪所有的 lib.a，即便你在前面忽略了 .a 文件
+!lib.a
+
+# 只忽略当前目录下的 TODO 文件，而不忽略 subdir/TODO
+/TODO
+
+# 忽略任何目录下名为 build 的文件夹
+build/
+
+# 忽略 doc/notes.txt，但不忽略 doc/server/arch.txt
+doc/*.txt
+
+# 忽略 doc/ 目录及其所有子目录下的 .pdf 文件
+doc/**/*.pdf
+```
+
+Tip:
+
+GitHub 有一个十分详细的针对数十种项目及语言的 .gitignore 文件列表， 你可以在 <https://github.com/github/gitignore> 找到它。
 
 ## 命令
 
