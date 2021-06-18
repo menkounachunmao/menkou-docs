@@ -2,7 +2,7 @@
  * @Author: xx
  * @Date: 2021-06-18 10:50:27
  * @LastEditors: 青峰
- * @LastEditTime: 2021-06-18 15:25:52
+ * @LastEditTime: 2021-06-18 15:51:36
  * @FilePath: /vue-press/docs/git/README.md
 -->
 
@@ -56,6 +56,8 @@ git add README
 git commit
 
 git commit -m <提交说明>
+
+git commit -a -m <提交说明> // 快速提交
 ```
 
 提交说明格式建议：
@@ -68,6 +70,32 @@ git commit -m <提交说明>
 - HOTFIX: 用于线上紧急bug修复
 - DEL-STYLE：对于代码风格上删除一些无用代码、注释等
 - DEL-FEAT: 删除一些无用的功能块代码
+
+### 移除文件
+
+```bash
+1. rm <文件名> 或者手动删除
+2. git rm <文件名>
+```
+
+- 如果要删除之前修改过或已经放到暂存区的文件，则必须使用强制删除选项 -f（译注：即 force 的首字母）
+
+ ```bash
+git rm -f  <文件名>
+```
+
+-只清除暂存区不删除文件
+
+```bash
+git rm --cached <文件名>
+```
+
+```git rm``` 命令后面可以列出文件或者目录的名字，也可以使用 glob 模式。比如：
+删除 ```log/``` 目录下扩展名为 ```.log``` 的所有文件
+
+```bash
+git rm log/\*.log 
+```
 
 ### .gitignore
 
