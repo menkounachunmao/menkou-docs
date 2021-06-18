@@ -2,7 +2,7 @@
  * @Author: xx
  * @Date: 2021-06-18 10:50:27
  * @LastEditors: 青峰
- * @LastEditTime: 2021-06-18 17:35:36
+ * @LastEditTime: 2021-06-18 17:41:49
  * @FilePath: /vue-press/docs/git/README.md
 -->
 
@@ -267,118 +267,6 @@ doc/**/*.pdf
 Tip:
 
 GitHub 有一个十分详细的针对数十种项目及语言的 .gitignore 文件列表， 你可以在 <https://github.com/github/gitignore> 找到它。
-
-## 命令
-
-### 配置相关
-
-1、查看用户名以及邮箱
-
-```bash
-git config user.name
-git config user.email
-```
-
-2、修改用户名以及邮箱
-
-```bash
-git config --global user.name "your name"
-git config --global user.email "your email"
-```
-
-### 工作区
-
-流程：工作区 缓存区 本地仓库 远程仓库
-
-- 创建本地仓库
-
-```bash
- git init --bare helloword.git
-```
-
-- add工作到缓存
-
-**git add -A** 提交所有变化,是下面两个功能的合集（git add --all的缩写）
-
-```bash
-git add -A
-```
-
-git add .  
-
-> 他会监控工作区的状态树，使用它会把工作时的所有变化提交到暂存区，包括文件内容修改(modified)以及新文件(new)，但不包括被删除的文件。
-
-git add -u
-> 他仅监控已经被add的文件（即tracked file），他会将被修改的文件提交到暂存区。add -u 不会提交新文件（untracked file）。（git add --update的缩写）
-
-- 提交到本地仓库
-
-```bash
-git commit -m"注释"
-```
-
-- 链接远程仓库
-
-```bash
-git remote -v  查看远程仓库
-git remote rename pb paul 修改远程仓库本地简称
-git remote add <shortname> <url> 添加远程仓库
-```
-
-### 分支
-
-- 创建分支
-
-```bash
-git checkout -b dev
-// -b 表示创建并切换到该分支
-```
-
-- 查看当前分支
-
-```bash
-git branch
-```
-
-- 查看所有分支
-
-```bash
-git branch -a
-```
-
-- 合并分支
-
-```bash
-git merge dev
-```
-
-- 将远程git仓库里的指定分支拉取到本地（本地不存在的分支）
-
-```bash
-git checkout -b 本地分支名 origin/远程分支名
-```
-
-- 修剪远程分支
-
-当某些分支远程已经删除本地还是存在时
-
-```bash
-git remote prune origin
-```
-
-- 修补上次提交
-
-对上次提交进行修改，添加文件或者修改注释
-
-```bash
-git commit --amend
-```
-
-- 同步远程仓库中所有分支的引用
-
-```bash
- git fetch <remote>
-```
 
 ### 补救
 
