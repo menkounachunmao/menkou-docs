@@ -2,7 +2,7 @@
  * @Author: xx
  * @Date: 2021-06-18 10:50:27
  * @LastEditors: 青峰
- * @LastEditTime: 2021-06-18 11:32:15
+ * @LastEditTime: 2021-06-18 11:44:40
  * @FilePath: /vue-press/docs/git/README.md
 -->
 
@@ -126,6 +126,14 @@ git commit --amend
 
 ### 补救
 
+撤消对文件的修改
+
+```bash
+ git checkout -- <file>
+```
+
+```git checkout .``` 放弃所有更改
+
 回滚
 
 ```bash
@@ -188,3 +196,7 @@ git push origin :refs/tags/dev_test
 ```bash
 git pull origin master --allow-unrelated-histories
 ```
+
+## 相关资源
+
+[Pro Git](https://git-scm.com/book/zh/v2)
