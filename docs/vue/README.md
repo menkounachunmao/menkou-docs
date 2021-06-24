@@ -2,7 +2,7 @@
  * @Author: xx
  * @Date: 2021-06-22 16:51:49
  * @LastEditors: 青峰
- * @LastEditTime: 2021-06-22 18:08:30
+ * @LastEditTime: 2021-06-24 19:54:35
  * @FilePath: /vue-press/docs/vue/README.md
 -->
 
@@ -10,14 +10,23 @@
 
 [官方文档 yyds](https://cn.vuejs.org/)
 
-## vuex
+## Api
 
-[vuex](./vuex.html)
+### nextTick
 
-## vue-router
+执行过程：
 
-[vue-router](./vue-router.html)
+1. dom修改后dom tree实时修改
+2. vue异步更新dom，下一个task
+3. Promise、MutationObserver以及setTimeout三种方式尝试推入到任务队列
+4. 一次task完成后才会ui render
 
-## component
+```nextTick``` 并不是把任务插入到任务队列最尾部。下面代码```tiemout```打印的是最新值(应为是下一个task),```nextTick```还是之前值(后面值改变的任务插入在了nexTick回调之后)，vue的dom更新也是异步。
 
-[component](./component.html)
+```js
+ this.$nextTick(() => console.log(wordTemp.innerHTML));
+    setTimeout(() => {
+       console.log(wordTemp.innerHTML);
+    }, 100);
+    this.wordTest = "changed";
+```
