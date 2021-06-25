@@ -2,7 +2,7 @@
  * @Author: xx
  * @Date: 2021-06-17 15:40:56
  * @LastEditors: 青峰
- * @LastEditTime: 2021-06-25 10:38:10
+ * @LastEditTime: 2021-06-25 11:11:32
  * @FilePath: /vue-press/docs/.vuepress/config.ts
  */
 import { defineUserConfig } from 'vuepress'
@@ -88,10 +88,14 @@ export default defineUserConfig<DefaultThemeOptions>({
           text: 'CSS',
           isGroup: true,
           children: [
-            // SidebarItem
             {
               text: '基础',
               link: '/css-doc',
+              children: [],
+            },
+            {
+              text: '布局',
+              link: '/css-doc/layout.html',
               children: [],
             },
           ],
