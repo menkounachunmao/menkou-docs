@@ -2,7 +2,7 @@
  * @Author: xx
  * @Date: 2021-06-17 15:40:56
  * @LastEditors: 青峰
- * @LastEditTime: 2021-06-24 19:55:55
+ * @LastEditTime: 2021-06-25 10:38:10
  * @FilePath: /vue-press/docs/.vuepress/config.ts
  */
 import { defineUserConfig } from 'vuepress'
@@ -17,18 +17,18 @@ export default defineUserConfig<DefaultThemeOptions>({
       sidebar: [
         // SidebarItem
         {
-          text: '代码管理',
+          text: 'Git',
           isGroup: true,
           children: [
             // SidebarItem
             {
               text: '基础',
-              link: '/git',
+              link: '/git-doc',
               children: [],
             },
             {
               text: 'more',
-              link: '/git/more.html',
+              link: '/git-doc/more.html',
               children: [],
             },
           ],
@@ -40,22 +40,22 @@ export default defineUserConfig<DefaultThemeOptions>({
           children: [
             {
               text: '基础',
-              link: '/vue',
+              link: '/vue-doc',
               children: [],
             },
             {
               text: 'component',
-              link: '/vue/component.html',
+              link: '/vue-doc/component.html',
               children: [],
             },
             {
               text: 'vue-router',
-              link: '/vue/vue-router.html',
+              link: '/vue-doc/vue-router.html',
               children: [],
             },
             {
               text: 'vuex',
-              link: '/vue/vuex.html',
+              link: '/vue-doc/vuex.html',
               children: [],
             },
           ],
@@ -67,7 +67,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             // SidebarItem
             {
               text: 'typeScript',
-              link: '/typeScript',
+              link: '/ts-doc',
               children: [],
             },
           ],
@@ -79,7 +79,19 @@ export default defineUserConfig<DefaultThemeOptions>({
             // SidebarItem
             {
               text: 'canvas',
-              link: '/canvas',
+              link: '/canvas-doc',
+              children: [],
+            },
+          ],
+        },
+        {
+          text: 'CSS',
+          isGroup: true,
+          children: [
+            // SidebarItem
+            {
+              text: '基础',
+              link: '/css-doc',
               children: [],
             },
           ],
