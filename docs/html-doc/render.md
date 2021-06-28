@@ -2,7 +2,7 @@
  * @Author: xx
  * @Date: 2021-06-25 16:19:37
  * @LastEditors: 青峰
- * @LastEditTime: 2021-06-25 16:42:22
+ * @LastEditTime: 2021-06-28 11:54:01
  * @FilePath: /vue-press/docs/html-doc/render.md
 -->
 
@@ -10,7 +10,7 @@
 
 ## HTML解析过程
 
-### HTML解析过程
+### 大概步骤
 
 构建DOM树 ——》 构建CSSOM ——》根据DOM树和CSSOM树构建render树 ——》有了render树就开始布局Layout ——》 最后绘制paint
 
