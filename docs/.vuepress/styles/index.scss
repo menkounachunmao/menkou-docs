@@ -1,3 +1,14 @@
-.logo{
-        border-radius: 12px;
-    }
+.logo {
+  border-radius: 12px;
+}
+
+.table-of-contents {
+    font-size: 12px;
+  }
+@media (min-width: 1025px) {
+  .table-of-contents {
+    position: fixed;
+    top: 20vh;
+    right: 5vw;
+  }
+}
