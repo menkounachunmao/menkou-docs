@@ -149,8 +149,13 @@ const sidebar: DefaultThemeOptions = [
     isGroup: true,
     children: [
       {
-        text: 'js',
+        text: 'this',
         link: '/js-doc/this.html',
+        children: [],
+      },
+      {
+        text: 'scop',
+        link: '/js-doc/scop.html',
         children: [],
       },
     ],
