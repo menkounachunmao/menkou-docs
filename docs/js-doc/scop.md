@@ -1,3 +1,5 @@
+[[toc]]
+
 # 作用域
 
 ## 作用域是什么？
@@ -148,3 +150,87 @@ console.log( bar ); // ReferenceError
 `foo`是变量，会被提升，但不会被赋值，对`undefined`进行函数调用会导致非法操作。
 
 函数声明会优于变量被提升，同名的变量**忽略**，同名的函数**覆盖**。
+
+## 闭包
+
+产生条件： 当函数可以记住并访问所在的词法作用域时，就产生了闭包，即使函数是在当前词法作用域之外执行。
+
+```js
+function foo() { 
+    var a = 2;
+    function bar() { 
+        console.log( a );
+    }
+    return bar; 
+}
+var baz = foo(); baz(); // 2 —— 朋友，这就是闭包的效果。
+```
+
+### 闭包和循环
+
+经典场景
+
+这段代码行为的预期是分别输出数字 1~5，每秒一次，每次一个。
+
+```js
+for (var i=1; i<=5; i++) { 
+    setTimeout( 
+        function timer() { 
+            console.log( i );
+        }, i*1000 ); 
+    }
+```
+
+这段代码在运行时会以每秒一次的频率输出五次 6。因为都在全局作用域中共享同一个i。循环结束后i为6
+
+- 使用立即执行函数解决
+
+```js
+for (var i=1; i<=5; i++) { 
+    (function(j) { 
+        setTimeout(function timer() { 
+                console.log( j );
+            }, j*1000 ); 
+    })( i ); 
+}
+```
+
+在迭代内使用 IIFE 会为每个迭代都生成一个新的作用域，使得延迟函数的回调可以将新的作用域封闭在每个迭代内部，每个迭代中都会含有一个具有正确值的变量供我们访问。
+
+- 使用let解决
+
+```js
+for (let i=1; i<=5; i++) { 
+    setTimeout( function timer() { console.log( i );
+}, i*1000 ); }
+```
+
+同样在与利用let的特性为每次循环来构建新的作用域。
+
+### 模块
+
+模块有两个主要特征：
+
+1. 为创建内部作用域而调用了一个包装函数；
+2. 包装函数的返回 值必须至少包括一个对内部函数的引用，这样就会创建涵盖整个包装函数内部作用域的闭 包。
+
+保证内部数据隐秘而私有，只提供公用的API。
+
+```js
+function CoolModule() { 
+    var something = "cool";
+    var another = [1, 2, 3];
+    function doSomething() { 
+        console.log( something );
+    }
+    function doAnother() { 
+        console.log( another.join( " ! " ) );
+    }
+    return { 
+        doSomething: doSomething, 
+        doAnother: doAnother
+    }; 
+} 
+var foo = CoolModule();
+foo.doSomething(); // cool foo.doAnother(); // 1 ! 2 ! 3
+```
