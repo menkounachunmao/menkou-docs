@@ -158,6 +158,22 @@ const sidebar: DefaultThemeOptions = [
         link: '/js-doc/scop.html',
         children: [],
       },
+      {
+        text: 'object',
+        link: '/js-doc/object',
+        children: [
+          {
+            text: 'create',
+            link: '/js-doc/object/create.html',
+            children: [],
+          },
+          {
+            text: 'extend',
+            link: '/js-doc/object/extend.html',
+            children: [],
+          }
+        ],
+      },
     ],
   },
 ]
