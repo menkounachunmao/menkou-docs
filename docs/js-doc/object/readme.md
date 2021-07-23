@@ -182,21 +182,25 @@ year
 
 `Object.freeze(..)` 会创建一个冻结对象，这个方法实际上会在一个现有对象上调用 `Object.seal(..)` 并把所有“数据访问”属性标记为 `writable:false`，这样就无法修改它们的值。
 
+## 创建对象
+
+[创建对象](./create.md)
+
 ## 原型
 
 创建的每个函数都有一个prototype,指向函数的原型对象，所有原型对象都会自动获得一个constructor属性，这个属性包含一个指向prototype属性所在函数的指针(值回构造函数)，在脚本中无法访问[[Prototype]]
 
 在对象中添加属性会**屏蔽**原型对象中保存的同名属性，即使设置为null也会，使用delete操作符可以重新访问原型中的属性
 
-### hasOwnProperty()
+- 用来判断属性是否存在于对象实例上
 
-用来判断属性是否存在于对象实例上
+`hasOwnProperty()`
 
-### in 操作符
+- `in` 操作符
 
-能访问到的属性都返回true
+能访问到的属性都返回true(无论是否可枚举)
 
-### 自定义用来判断是否只存在原型上
+- 自定义用来判断是否只存在原型上
 
 ```js
 function hasOwnProperty(object, name) {
@@ -204,6 +208,11 @@ function hasOwnProperty(object, name) {
 }
 ```
 
-### Object.getOwnpropertyNames()
+- 获取所有实例属性无论是否可以枚举
 
-获取所有实例属性无论是否可以枚举
+````Object.getOwnpropertyNames()````
+
+
+- 检查对象之间的关系
+
+```Foo.prototype.isPrototypeOf( a ); // true```
