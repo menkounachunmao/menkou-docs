@@ -136,3 +136,62 @@ parasitic(SubType,SuperType);
 var instance = new SubType('张三', 3);
 instance.sayHi();
 ```
+
+## 更好的实现方式-行为委托
+
+原型模式
+
+```js
+function Foo(who) { 
+    this.me = who;
+} 
+Foo.prototype.identify = function() { return "I am " + this.me;
+};
+function Bar(who) { Foo.call( this, who );
+} 
+Bar.prototype = Object.create( Foo.prototype );
+Bar.prototype.speak = function() { 
+    alert( "Hello, " + this.identify() + "." );
+};
+var b1 = new Bar( "b1" ); 
+var b2 = new Bar( "b2" );
+b1.speak(); 
+b2.speak();
+```
+
+委托模式
+
+```js
+Foo = { 
+    init: function(who) { 
+        this.me = who;
+    }, 
+    identify: function() { 
+        return "I am " + this.me;
+    }
+}; 
+Bar = Object.create( Foo );
+Bar.speak = function() { 
+    alert( "Hello, " + this.identify() + "." );
+};
+var b1 = Object.create( Bar ); 
+b1.init( "b1" ); 
+var b2 = Object.create( Bar );
+b2.init( "b2" );
+b1.speak(); 
+b2.speak();
+```
+
+## `prototype` 和 `__proto__`
+
+`prototype` :
+
+创建函数，就会根据特定的规则为函数创建 `prototype` 属性，指向函数的原型对象。
+
+`__proto__` :
+
+当函数被构造调用创建一个新实例后，该实例将包含一个指向构造函数的原型对象的指针。
+
+## instanceof
+
+```instanceof(a,b)``` 是比较 ```b.prototype``` 是否在``` a.__proto__``` 原型链上。
