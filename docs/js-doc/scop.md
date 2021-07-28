@@ -232,3 +232,8 @@ function CoolModule() {
 var foo = CoolModule();
 foo.doSomething(); // cool foo.doAnother(); // 1 ! 2 ! 3
 ```
+
+## 执行环境
+
+### 作用域链
+> 保证对执行环境有权访问的所有变量和函数的有序访问。
