@@ -174,6 +174,11 @@ const sidebar: DefaultThemeOptions = [
           }
         ],
       },
+      {
+        text: 'operator',
+        link: '/js-doc/operator.html',
+        children: [],
+      },
     ],
   },
 ]
