@@ -179,6 +179,11 @@ const sidebar: DefaultThemeOptions = [
         link: '/js-doc/operator.html',
         children: [],
       },
+      {
+        text: 'bom',
+        link: '/js-doc/bom.html',
+        children: [],
+      },
     ],
   },
 ]
