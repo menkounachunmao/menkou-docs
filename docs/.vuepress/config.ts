@@ -184,6 +184,11 @@ const sidebar: DefaultThemeOptions = [
         link: '/js-doc/bom.html',
         children: [],
       },
+      {
+        text: 'dom',
+        link: '/js-doc/dom.html',
+        children: [],
+      },
     ],
   },
 ]
