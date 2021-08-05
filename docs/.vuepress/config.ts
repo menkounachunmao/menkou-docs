@@ -189,6 +189,16 @@ const sidebar: DefaultThemeOptions = [
         link: '/js-doc/dom.html',
         children: [],
       },
+      {
+        text: 'event',
+        link: '/js-doc/event.html',
+        children: [],
+      },
+      {
+        text: 'drag',
+        link: '/js-doc/drag.html',
+        children: [],
+      },
     ],
   },
 ]
