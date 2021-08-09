@@ -47,7 +47,7 @@ dom 是针对 html 和 xml 文档的一个 API 。 描述了一个层次化的�
 
 ### 操作节点
 
-- `appendChild(newNode)` 向末尾添加节点,返回插入的节点。
+- `appendChild(newNode)` 向末尾添加节点,返回插入的节点。（如果节点已经是文档的一部分，那结果就是将该节点从原来的位置转移到新的位置）
 - `insertBefore(newNode,TargetNode)` 向 `TargetNode` 前添加一个节点，返回插入的节点。
 - `replaceChild(newNode,TargetNode)` 返回被替换的节点。
 - `removeChild(TargetNode)` 返回被移除的节点。
