@@ -87,6 +87,11 @@ event 对象常见属性和方法
 
 `mousewheel` 鼠标滚轮事件
 
+- `mouseleave`  和 `mouseout`
+
+mouseleave 不会冒泡，所以只有移出当前元素才会触发，mouseout 冒泡，所以移出其子元素也会触发。
+
+
 ### 键盘事件
 
 `keydown` 键盘按下任意键
