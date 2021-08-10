@@ -149,8 +149,54 @@ const sidebar: DefaultThemeOptions = [
     isGroup: true,
     children: [
       {
-        text: 'js',
+        text: 'this',
         link: '/js-doc/this.html',
+        children: [],
+      },
+      {
+        text: 'scop',
+        link: '/js-doc/scop.html',
+        children: [],
+      },
+      {
+        text: 'object',
+        link: '/js-doc/object',
+        children: [
+          {
+            text: 'create',
+            link: '/js-doc/object/create.html',
+            children: [],
+          },
+          {
+            text: 'extend',
+            link: '/js-doc/object/extend.html',
+            children: [],
+          }
+        ],
+      },
+      {
+        text: 'operator',
+        link: '/js-doc/operator.html',
+        children: [],
+      },
+      {
+        text: 'bom',
+        link: '/js-doc/bom.html',
+        children: [],
+      },
+      {
+        text: 'dom',
+        link: '/js-doc/dom.html',
+        children: [],
+      },
+      {
+        text: 'event',
+        link: '/js-doc/event.html',
+        children: [],
+      },
+      {
+        text: 'drag',
+        link: '/js-doc/drag.html',
         children: [],
       },
     ],
